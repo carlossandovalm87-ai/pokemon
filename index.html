@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Explora y busca Pokémon en la Pokédex.">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/main.js"></script>
+    <title>Pokédex | Pokémon</title>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="./noticias.html" aria-label="Inicio Pokémon">
+            <span class="brand-mark" aria-hidden="true"></span>
+        </a>
+        <nav class="site-nav" aria-label="Navegación principal">
+            <a class="nav-link" href="./noticias.html">Noticias</a>
+            <a class="nav-link" href="./videojuegos.html">Videojuegos</a>
+            <a class="nav-link nav-link-active" href="#pokedex">Pokédex</a>
+            <a class="nav-link" href="#pokemon-aleatorio">Pokémon</a>
+        </nav>
+    </header>
+
+    <main id="pokedex" class="page-content">
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">Descubre tu próximo compañero</p>
+            <h1 id="page-title">Pokédex</h1>
+            <p class="intro-copy">Busca Pokémon por nombre o número y explora sus tipos.</p>
+        </section>
+
+        <section class="search-panel" aria-label="Filtros de la Pokédex">
+            <form id="filters-form" class="filters-form">
+                <div class="field search-field">
+                    <label for="pokemon-search">Nombre o número</label>
+                    <input
+                        id="pokemon-search"
+                        name="pokemon"
+                        type="search"
+                        placeholder="Ej.: Pikachu o 25"
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="field type-field">
+                    <label for="type-filter">Tipo</label>
+                    <select id="type-filter" name="type">
+                        <option value="">Todos los tipos</option>
+                        <option value="normal">Normal</option>
+                        <option value="fire">Fuego</option>
+                        <option value="water">Agua</option>
+                        <option value="electric">Eléctrico</option>
+                        <option value="grass">Planta</option>
+                        <option value="ice">Hielo</option>
+                        <option value="fighting">Lucha</option>
+                        <option value="poison">Veneno</option>
+                        <option value="ground">Tierra</option>
+                        <option value="flying">Volador</option>
+                        <option value="psychic">Psíquico</option>
+                        <option value="bug">Bicho</option>
+                        <option value="rock">Roca</option>
+                        <option value="ghost">Fantasma</option>
+                        <option value="dragon">Dragón</option>
+                        <option value="dark">Siniestro</option>
+                        <option value="steel">Acero</option>
+                        <option value="fairy">Hada</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button class="button button-primary" type="submit">Buscar</button>
+                    <button class="button button-secondary" id="clear-filters" type="button">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="pokemon-aleatorio" class="random-section" aria-labelledby="random-title">
+            <div class="random-copy">
+                <p class="eyebrow">Una sorpresa para ti</p>
+                <h2 id="random-title">Pokémon aleatorio</h2>
+                <p class="intro-copy">Pulsa la Pokébola para descubrir un Pokémon.</p>
+            </div>
+            <button
+                id="random-pokemon-button"
+                class="random-pokeball"
+                type="button"
+                aria-label="Descubrir un Pokémon aleatorio"
+                disabled
+            >
+                <span class="brand-mark" aria-hidden="true"></span>
+            </button>
+            <p id="random-status" class="random-status" role="status" aria-live="polite">
+                Preparando la Pokédex...
+            </p>
+            <div id="random-pokemon-result" class="random-result" aria-live="polite"></div>
+        </section>
+
+        <section class="results" aria-labelledby="results-title">
+            <div class="results-heading">
+                <div>
+                    <h2 id="results-title">Pokémon</h2>
+                    <p id="results-status" class="results-status" role="status" aria-live="polite">
+                        Cargando la Pokédex...
+                    </p>
+                </div>
+                <span class="pokedex-mark" aria-hidden="true">●</span>
+            </div>
+            <div id="pokemon-grid" class="pokemon-grid" aria-live="polite"></div>
+            <p id="error-message" class="error-message" role="alert" hidden></p>
+            <button id="load-more" class="button button-load" type="button" hidden>
+                Cargar más Pokémon
+            </button>
+        </section>
+    </main>
+
+    <dialog id="pokemon-dialog" class="pokemon-dialog" aria-label="Información del Pokémon">
+        <div class="dialog-panel">
+            <button id="close-pokemon-dialog" class="dialog-close" type="button" aria-label="Cerrar información">×</button>
+            <div id="pokemon-details"></div>
+        </div>
+    </dialog>
+
+    <footer class="site-footer">
+        <p>Datos e imágenes proporcionados por PokeAPI.</p>
+    </footer>
+</body>
+</html>
